@@ -717,3 +717,375 @@ body:not(.fonts-loaded) .intro h1 {
 body.fonts-loaded .intro h1 {
   visibility: visible;
 }
+
+/* =========================================================
+   NEBULA V10 — GUESTBOOK & ADMIN REFINEMENT
+   ========================================================= */
+
+:root {
+  --guest-blue: #8fc2ff;
+  --guest-blue-soft: rgba(112, 170, 255, .13);
+  --guest-border: rgba(157, 194, 242, .14);
+  --guest-text: #eaf3ff;
+  --guest-muted: #91a5c0;
+}
+
+/* MESSAGE CARDS */
+
+.guest-message {
+  position: relative;
+  min-width: 0;
+  padding: 23px 24px;
+  overflow: hidden;
+  border: 1px solid var(--guest-border);
+  border-radius: 19px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(83, 145, 230, .09),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(18, 34, 57, .72),
+      rgba(8, 17, 32, .76)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    0 12px 35px rgba(0,0,0,.12);
+  transition:
+    border-color .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.guest-message:hover {
+  border-color: rgba(137, 190, 255, .29);
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.065),
+    0 15px 38px rgba(0,0,0,.19),
+    0 0 24px rgba(76, 145, 235, .055);
+}
+
+/* MESSAGE HEADER */
+
+.guest-message-top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+.guest-avatar {
+  display: grid;
+  flex: 0 0 43px;
+  width: 43px;
+  height: 43px;
+  place-items: center;
+  border: 1px solid rgba(151, 195, 255, .24);
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(119, 178, 255, .2),
+    rgba(77, 120, 197, .08)
+  );
+  color: #dcecff;
+  font-size: 16px;
+  font-weight: 750;
+  box-shadow: inset 0 1px rgba(255,255,255,.08);
+}
+
+.guest-meta {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.guest-meta strong {
+  overflow: hidden;
+  color: var(--guest-text);
+  font-size: 13px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.guest-meta time {
+  color: var(--guest-muted);
+  font-size: 10px;
+  letter-spacing: .025em;
+}
+
+/* MESSAGE BODY */
+
+.guest-message-text {
+  margin: 19px 0 0;
+  color: #c3d1e4;
+  font-size: 13px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+/* ADMIN ACTIONS */
+
+.admin-message-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 19px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(163, 196, 239, .09);
+}
+
+.admin-message-actions button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border: 1px solid rgba(158, 192, 235, .15);
+  border-radius: 10px;
+  background: rgba(255,255,255,.035);
+  color: #c8d8ec;
+  font: 600 10px "Manrope", sans-serif;
+  cursor: pointer;
+  transition:
+    background .23s ease,
+    border-color .23s ease,
+    color .23s ease,
+    transform .23s ease;
+}
+
+.admin-message-actions button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.admin-message-actions button:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+.admin-action-approve {
+  border-color: rgba(105, 205, 163, .2) !important;
+  background: rgba(70, 180, 132, .075) !important;
+  color: #9de2c1 !important;
+}
+
+.admin-action-approve:hover:not(:disabled) {
+  border-color: rgba(105, 205, 163, .4) !important;
+  background: rgba(70, 180, 132, .15) !important;
+}
+
+.admin-action-reject {
+  border-color: rgba(245, 153, 153, .17) !important;
+  background: rgba(220, 91, 105, .06) !important;
+  color: #e9a8ae !important;
+}
+
+.admin-action-reject:hover:not(:disabled) {
+  border-color: rgba(245, 153, 153, .38) !important;
+  background: rgba(220, 91, 105, .13) !important;
+}
+
+.admin-action-delete {
+  border-color: rgba(245, 153, 153, .14) !important;
+  background: transparent !important;
+  color: #c995a0 !important;
+}
+
+.admin-action-delete:hover:not(:disabled) {
+  border-color: rgba(245, 153, 153, .38) !important;
+  background: rgba(220, 91, 105, .1) !important;
+  color: #ffb8c0 !important;
+}
+
+.admin-action-delete span {
+  font-size: 16px;
+  line-height: 10px;
+}
+
+/* PENDING LABEL */
+
+.message-pending-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 9px;
+  border: 1px solid rgba(238, 190, 111, .17);
+  border-radius: 99px;
+  background: rgba(238, 190, 111, .07);
+  color: #e7c48e;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .045em;
+}
+
+.message-pending-label span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e7bd77;
+  box-shadow: 0 0 9px rgba(231, 189, 119, .6);
+}
+
+/* EMPTY STATES */
+
+.empty-messages {
+  display: flex;
+  min-height: 150px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 25px;
+  border: 1px dashed rgba(143, 190, 248, .2);
+  border-radius: 18px;
+  background: rgba(15, 29, 49, .36);
+  text-align: center;
+}
+
+.empty-message-icon {
+  color: #9bc7ff;
+  font-size: 25px;
+  text-shadow: 0 0 18px rgba(115, 177, 255, .5);
+}
+
+.empty-messages p {
+  margin: 0;
+  color: #dceaff;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.empty-messages small {
+  color: #8298b5;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+/* ADMIN PANEL */
+
+.admin-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(140, 187, 247, .19);
+  border-radius: 23px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(87, 151, 236, .1),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(17, 33, 56, .85),
+      rgba(7, 16, 31, .91)
+    );
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.07),
+    0 18px 50px rgba(0,0,0,.2);
+}
+
+.admin-panel[hidden] {
+  display: none !important;
+}
+
+#adminLoggedIn[hidden],
+#adminLoginForm[hidden] {
+  display: none !important;
+}
+
+.admin-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #b8d4f8;
+  font-size: 12px;
+}
+
+.admin-status .availability-dot {
+  box-shadow: 0 0 10px rgba(100, 222, 165, .6);
+}
+
+.admin-help {
+  color: #8fa5c1;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.admin-moderation {
+  margin-top: 25px;
+}
+
+.admin-message-list {
+  display: grid;
+  gap: 13px;
+  margin-top: 18px;
+}
+
+.admin-message-item {
+  padding: 19px;
+}
+
+#adminStatus {
+  min-height: 18px;
+  margin-top: 12px;
+  color: #9ec9ff;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* SMOOTH LOADING FEEDBACK */
+
+.admin-message-actions button.is-loading,
+button.is-loading {
+  opacity: .65;
+  cursor: wait;
+}
+
+@media (max-width: 760px) {
+  .guest-message {
+    padding: 19px;
+    border-radius: 17px;
+  }
+
+  .guest-avatar {
+    flex-basis: 39px;
+    width: 39px;
+    height: 39px;
+    border-radius: 12px;
+  }
+
+  .guest-message-text {
+    font-size: 12px;
+  }
+
+  .admin-message-actions {
+    gap: 7px;
+  }
+
+  .admin-message-actions button {
+    flex: 1 1 auto;
+    min-height: 37px;
+  }
+
+  .message-pending-label {
+    font-size: 8px;
+  }
+
+  .admin-panel {
+    border-radius: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guest-message,
+  .admin-message-actions button {
+    transition: none !important;
+  }
+}

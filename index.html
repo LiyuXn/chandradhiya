@@ -211,8 +211,44 @@ href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&fami
               <label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Your password" required />
               <button class="button button-primary" type="submit">Sign in <span>↗</span></button>
             </form>
-            <div id="adminLoggedIn" hidden><p class="admin-status"><span class="availability-dot"></span> Admin session active</p><p class="admin-help">Tombol hapus akan muncul pada setiap pesan.</p><button class="button button-quiet" id="adminLogout" type="button">Sign out</button></div>
-            <p class="form-status" id="adminStatus" role="status" aria-live="polite"></p>
+  
+<p
+  class="form-status"
+  id="adminStatus"
+  role="status"
+  aria-live="polite"
+></p>
+<div id="adminLoggedIn" hidden>
+  <p class="admin-status">
+    <span class="availability-dot"></span>
+    Admin session active
+  </p>
+
+  <p class="admin-help">
+    Review incoming messages before publishing them.
+  </p>
+
+  <div class="admin-moderation">
+    <div class="guestbook-heading">
+      <div>
+        <span class="card-kicker">MODERATION</span>
+        <h3>Message queue <span>✧</span></h3>
+      </div>
+    </div>
+
+    <div id="adminMessageList" class="admin-message-list">
+      <p>Loading messages...</p>
+    </div>
+  </div>
+
+  <button class="button button-quiet" id="adminLogout" type="button">
+    Sign out
+  </button>
+</div>
+
+           <p class="form-status" id="formStatus" role="status" aria-live="polite">
+  Pesan akan ditampilkan setelah ditinjau oleh admin.
+</p>
           </div>
 
           <div class="guestbook-heading"><div><span class="card-kicker">THE GUESTBOOK</span><h3>Recent messages <span>✧</span></h3></div><span class="live-label"><i></i> LIVE NOTES</span></div>
