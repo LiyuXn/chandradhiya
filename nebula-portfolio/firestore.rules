@@ -1,0 +1,40 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /messages/{messageId} {
+
+      // Semua pengunjung boleh membaca pesan
+      allow read: if true;
+
+      // Pengunjung boleh mengirim pesan
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'name',
+          'message',
+          'createdAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'name',
+          'message',
+          'createdAt'
+        ]) &&
+        request.resource.data.name is string &&
+        request.resource.data.name.size() > 0 &&
+        request.resource.data.name.size() <= 40 &&
+        request.resource.data.message is string &&
+        request.resource.data.message.size() > 0 &&
+        request.resource.data.message.size() <= 600 &&
+        request.resource.data.createdAt == request.time;
+
+      // Pesan tidak boleh diedit
+      allow update: if false;
+
+      // Hanya admin yang boleh menghapus pesan
+      allow delete: if request.auth != null &&
+        request.auth.uid == "BONgnK356QTKSzq2PvHrZx44NEN2";
+    }
+  }
+}
