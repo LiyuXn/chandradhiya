@@ -50,7 +50,11 @@ function closeIntro() {
   window.setTimeout(() => intro.remove(), 1100);
 }
 document.body.classList.add("intro-active");
-// Intro exits automatically; no manual enter/skip controls are shown.
+
+document.fonts.ready.then(() => {
+  document.body.classList.add("fonts-loaded");
+});
+
 window.setTimeout(closeIntro, 3400);
 
 /* ---------------------------- STARFIELD ---------------------------- */

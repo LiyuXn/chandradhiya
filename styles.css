@@ -706,3 +706,14 @@ html { scroll-behavior: smooth !important; scroll-padding-top: 112px; background
 .about-main.reveal {
   transform: none;
 }
+.intro h1 {
+  font-family: "Manrope", sans-serif;
+}
+
+body:not(.fonts-loaded) .intro h1 {
+  visibility: hidden;
+}
+
+body.fonts-loaded .intro h1 {
+  visibility: visible;
+}
