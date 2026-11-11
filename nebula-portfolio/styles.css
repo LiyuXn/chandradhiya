@@ -691,3 +691,18 @@ html { scroll-behavior: smooth !important; scroll-padding-top: 112px; background
     overflow-wrap: anywhere;
   }
 }
+/* ABOUT ME - FINAL OVERFLOW FIX */
+.about-layout {
+  align-items: start;
+}
+
+.about-main {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.about-main.reveal {
+  transform: none;
+}
