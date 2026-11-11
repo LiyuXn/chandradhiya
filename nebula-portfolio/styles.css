@@ -677,3 +677,17 @@ html { scroll-behavior: smooth !important; scroll-padding-top: 112px; background
   overflow-wrap: anywhere;
   word-break: normal;
 }
+/* FIX ABOUT ME MOBILE */
+@media (max-width: 760px) {
+  .about-main {
+    height: auto !important;
+    min-height: 0;
+    max-height: none !important;
+    overflow: visible;
+  }
+
+  .about-main p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
