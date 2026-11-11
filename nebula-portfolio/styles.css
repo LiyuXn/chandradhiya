@@ -665,3 +665,15 @@ html { scroll-behavior: smooth !important; scroll-padding-top: 112px; background
   will-change: transform, width;
   backface-visibility: hidden;
 }
+/* FIX ABOUT TEXT OVERFLOW */
+.about-main {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.about-main p {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
