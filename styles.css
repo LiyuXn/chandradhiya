@@ -257,33 +257,44 @@ html { scroll-behavior: auto !important; }
 
 /* Soft background light follows the pointer; the native system cursor stays visible. */
 .pointer-ambient {
-  position: fixed;
+  position: fixed !important;
   z-index: 0;
   top: 0;
   left: 0;
+
   width: min(44vw, 560px);
   height: min(44vw, 560px);
   min-width: 300px;
   min-height: 300px;
+
+  margin: 0;
   border-radius: 50%;
   pointer-events: none;
+
   opacity: 0;
   transform: translate3d(-700px, -700px, 0) translate(-50%, -50%);
-  background: radial-gradient(circle,
+
+  background: radial-gradient(
+    circle,
     rgba(69, 151, 255, .15) 0%,
     rgba(75, 139, 245, .085) 34%,
     rgba(100, 103, 226, .035) 53%,
-    transparent 72%);
+    transparent 72%
+  );
+
   will-change: transform, opacity;
-  contain: paint;
   transition: opacity .42s ease;
 }
-.pointer-ambient.is-visible { opacity: .9; }
-@media (max-width: 760px), (prefers-reduced-motion: reduce) {
-  .pointer-ambient { display: none !important; }
+
+.pointer-ambient.is-visible {
+  opacity: .9;
 }
 
-
+@media (max-width: 760px), (prefers-reduced-motion: reduce) {
+  .pointer-ambient {
+    display: none !important;
+  }
+}
 /* ===================== V7 FINAL POLISH ===================== */
 :root { scroll-behavior: smooth !important; scroll-padding-top: 112px; }
 html { scroll-behavior: smooth !important; scroll-padding-top: 112px; background: var(--bg); }
